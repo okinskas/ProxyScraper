@@ -18,7 +18,10 @@ class BaseScraper(ABC):
 
     def start_driver(self):
         print('starting driver...')
-        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+        chrome_options = webdriver.ChromeOptions()
+        prefs = {'profile.managed_default_content_settings.images': 2}
+        chrome_options.add_experimental_option("prefs", prefs)
+        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver', options=chrome_options)
         sleep(4)
 
     def close_driver(self):
