@@ -1,11 +1,12 @@
 
 class Proxy(object):
 
-    def __init__(self, ip, port, code, anonymity):
+    def __init__(self, ip, port, code, country, anon):
         self._ip = ip
         self._port = port
         self._code = code
-        self._anonymity = anonymity
+        self._country = country
+        self._anon = anon
 
     @property
     def ip(self):
@@ -32,9 +33,20 @@ class Proxy(object):
         self._code = code
 
     @property
-    def anonymity(self):
-        return self._anonymity
+    def country(self):
+        return self._country
 
-    @anonymity.setter
-    def anonymity(self, anonymity):
-        self._anonymity = anonymity
+    @country.setter
+    def country(self, country):
+        self._country = country
+
+    @property
+    def anon(self):
+        return self._anon
+
+    @anon.setter
+    def anon(self, anon):
+        self._anon = anon
+
+    def __str__(self):
+        return str([self.ip, self.port, self.code, self.country, self.anon])
