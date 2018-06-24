@@ -1,12 +1,14 @@
+import unittest
 from proxyscraper.scrapers.freeproxylist import FreeProxyListScraper
 
-# Temp implementation
-# A lot of this should be abstracted in object creation.
-if __name__ == "__main__":
 
-    scraper = FreeProxyListScraper()
-    scraper.start_driver()
-    scraper.get_page()
-    scraper.scrape()
-    scraper.manip_table()
-    scraper.close_driver()
+class TestFreeProxyList(unittest.TestCase):
+
+    def test_get_proxy_list(self):
+        scraper = FreeProxyListScraper()
+        proxies = scraper.get_proxy_list()
+        [print(p) for p in proxies]
+
+
+if __name__ == "__main__":
+    unittest.main()
