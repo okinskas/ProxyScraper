@@ -8,6 +8,7 @@ class TestFreeProxyList(unittest.TestCase):
         scraper = FreeProxyListScraper()
         proxies = scraper.get_proxy_list()
         [print(p) for p in proxies]
+        assert proxies is not []
 
 
 if __name__ == "__main__":
